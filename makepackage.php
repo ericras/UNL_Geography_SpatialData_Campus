@@ -4,7 +4,7 @@ function autoload($class)
     $class = str_replace('_', '/', $class);
     include $class . '.php';
 }
-    
+
 spl_autoload_register("autoload");
 
 set_include_path(dirname(__FILE__).'/src'.PATH_SEPARATOR.dirname(__FILE__).'/lib/php');

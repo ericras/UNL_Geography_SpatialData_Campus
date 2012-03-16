@@ -1,10 +1,10 @@
 <?php
 /**
  * This package houses and returns spatial data for the UNL Campus.
- * 
+ *
  * Initially we only have latitude and longitude for a few buildings on campus.
- * 
- * 
+ *
+ *
  * @author Brett Bieber
  * @package UNL_Geography_SpatialData_Campus
  */
@@ -12,7 +12,7 @@ require_once 'UNL/Common/Building.php';
 
 class UNL_Geography_SpatialData_Campus
 {
-    
+
     /**
      * The driver to be used for retrieving data
      *
@@ -37,13 +37,24 @@ class UNL_Geography_SpatialData_Campus
 
     /**
      * Returns the geographical coordinates for a building.
-     * 
+     *
      * @param string $code Building Code for the building you want coordinates of.
-     * @return Associative array of coordinates lat and lon. false on error. 
+     * @return Associative array of coordinates lat and lon. false on error.
      */
     function getGeoCoordinates($code)
     {
         return self::getDriver()->getGeoCoordinates($code);
+    }
+
+    /**
+     * Returns the geographical boundary coordinates for a building.
+     *
+     * @param string $code Building Code for the building you want coordinates of.
+     * @return Array of associative arrays of coordinates lat and lon. false on error.
+     */
+    function getPolyCoordinates($code)
+    {
+        return self::getDriver()->getPolyCoordinates($code);
     }
 
     /**
@@ -55,10 +66,10 @@ class UNL_Geography_SpatialData_Campus
     {
         return self::getDriver()->buildingExists($code);
     }
-    
+
     /**
      * returns the map url for a given building.
-     * 
+     *
      * @param string $code Building code.
      * @return string URL to the map.
      */

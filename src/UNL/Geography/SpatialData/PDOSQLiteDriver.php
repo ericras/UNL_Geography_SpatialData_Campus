@@ -2,7 +2,6 @@
 
 class UNL_Geography_SpatialData_PDOSQLiteDriver extends UNL_Geography_SpatialData_SQLiteDriver
 {
-
     function __construct()
     {
         self::$db_file  = 'spatialdata.pdo.sqlite';
@@ -11,13 +10,9 @@ class UNL_Geography_SpatialData_PDOSQLiteDriver extends UNL_Geography_SpatialDat
 
     protected function __connect()
     {
-        $this->db = new PDO('sqlite:'.self::getDataDir().self::$db_file);
-        return $this->db;
+        if ($this->db = new PDO('sqlite:'.self::getDataDir().self::$db_file)) {
+            return $this->db;
+        }
+        throw new Exception('Cannot connect to database!');
     }
-
-    protected function _getResultRowCount($result)
-    {
-        return $result->rowCount();
-    }
-
 }

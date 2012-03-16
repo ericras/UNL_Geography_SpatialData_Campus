@@ -23,11 +23,12 @@ class UNL_Geography_SpatialData_UNLMapsWebServiceDriver implements UNL_Geography
 
         $this->geo_data = $data['buildings'];
     }
+
     /**
      * Returns the geographical coordinates for a building.
-     * 
+     *
      * @param string $code Building Code for the building you want coordinates of.
-     * @return Associative array of coordinates lat and lon. false on error. 
+     * @return Associative array of coordinates lat and lon. false on error.
      */
     function getGeoCoordinates($code)
     {
@@ -35,6 +36,18 @@ class UNL_Geography_SpatialData_UNLMapsWebServiceDriver implements UNL_Geography
             return array('lat'=>$this->geo_data[$code]['position']['point']['latitude'],
                          'lon'=>$this->geo_data[$code]['position']['point']['longitude']);
         }
+        return false;
+    }
+
+    /**
+     * Returns the geographical boundary coordinates for a building.
+     *
+     * @param string $code Building Code for the building you want coordinates of.
+     * @return Array of associative arrays of coordinates lat and lon. false on error.
+     */
+    function getPolyCoordinates($code)
+    {
+        //@TODO this
         return false;
     }
 

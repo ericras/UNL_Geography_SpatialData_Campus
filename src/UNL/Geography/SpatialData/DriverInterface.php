@@ -4,11 +4,19 @@ interface UNL_Geography_SpatialData_DriverInterface
 {
     /**
      * Returns the geographical coordinates for a building.
-     * 
+     *
      * @param string $code Building Code for the building you want coordinates of.
-     * @return Associative array of coordinates lat and lon. false on error. 
+     * @return Associative array of coordinates lat and lon. false on error.
      */
     function getGeoCoordinates($code);
+
+    /**
+     * Returns the geographical boundary coordinates for a building.
+     *
+     * @param string $code Building Code for the building you want coordinates of.
+     * @return Array of associative arrays of coordinates lat and lon. false on error.
+     */
+    function getPolyCoordinates($code);
 
     /**
      * Checks if a building with the given code exists.
